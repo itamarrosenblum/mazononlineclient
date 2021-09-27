@@ -1,4 +1,4 @@
 module.exports = {
-  domain: "https://mazononline.herokuapp.com",
+  domain: "https://mazononlinedb.herokuapp.com",
   // domain: "http://localhost:3001",
 };
