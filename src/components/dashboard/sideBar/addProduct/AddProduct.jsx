@@ -135,29 +135,11 @@ const AddProduct = () => {
 
     const addNewProduct = async (productName, category, price, img) => { // Fetch new product
         try {
-            // setSpinnerState(true);
-            // const res = await axios.post(`${domain}/product`, 
-            // {productName: productName, category: category, price: price, img: img});
-            // setSpinnerState(false);
-
             setSpinnerState(true);
-            const obj = {
-                productName: productName, 
-                category: category, 
-                price: price, 
-                img: img
-            }
-            const data = await fetch(`${domain}/product`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(obj)
-            });
-            const res = await data.json();
+            const res = await axios.post(`${domain}/product`, 
+            {productName: productName, category: category, price: price, img: img});
             setSpinnerState(false);
-
+            
             if (res.data.status === '200') {
                 dispatch({type: 'SET_REFETCH', refetch: Math.random() * 2});
                 setPreviewSource('');  
@@ -175,19 +157,8 @@ const AddProduct = () => {
 
     const createCategory = async (productName, newCategory, price, img) => { // Fetch new category
         try {
-            // const res = await axios.post(`${domain}/category`, 
-            // {newCategory: newCategory});
-            // setSpinnerState(false);
-
-            const data = await fetch(`${domain}/category`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({newCategory: newCategory})
-            });
-            const res = await data.json();
+            const res = await axios.post(`${domain}/category`, 
+            {newCategory: newCategory});
             setSpinnerState(false);
 
             if (res.data.status === '200') {
